@@ -1,4 +1,4 @@
 #!/bin/bash
+exec /sbin/setuser abc meteor update
 cd /config/plexrequests-meteor && \
-exec /sbin/setuser abc meteor update && \
-exec /sbin/setuser abc meteor
+exec /sbin/setuser abc meteor --port 0.0.0.0:3000
