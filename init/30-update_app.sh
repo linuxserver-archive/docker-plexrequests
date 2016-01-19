@@ -4,11 +4,11 @@ cd /config
 
 #Install/Update PlexRequests
 if [ ! -d "plexrequests-meteor" ]; then
-	git clone https://github.com/lokenx/plexrequests-meteor.git
+	git clone -q https://github.com/lokenx/plexrequests-meteor.git
 else
 	cd plexrequests-meteor
-	git reset --hard
-	git pull
+	git reset -q --hard
+	git pull -q
 fi
 
 
