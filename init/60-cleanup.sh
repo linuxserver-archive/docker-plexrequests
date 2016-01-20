@@ -1,6 +1,7 @@
+#!/bin/bash
+
 rm -rf $COPIED_APP_PATH
 rm -rf $BUNDLE_DIR
-#rm -rf /tmp/.meteor
 rm /usr/local/bin/meteor
 rm -rf /usr/share/doc /usr/share/doc-base 
 rm -rf /tmp/*
