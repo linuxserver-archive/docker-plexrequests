@@ -1,7 +1,7 @@
 FROM linuxserver/baseimage
 MAINTAINER zaggash <zaggash@users.noreply.github.com>
 
-ENV APTLIST="git-core curl"
+ENV APTLIST="git curl"
 ENV COPIED_APP_PATH="/tmp/git-app"
 ENV BUNDLE_DIR="/tmp/bundle-dir"
 
