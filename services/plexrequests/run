@@ -1,0 +1,14 @@
+#!/bin/bash
+set -e
+
+cd /app
+
+# Set a delay to wait to start meteor container
+if [[ $DELAY ]]; then
+  echo "Delaying startup for $DELAY seconds"
+  sleep $DELAY
+fi
+
+export PORT=${PORT:-3000}
+echo "=> Starting meteor app on port:$PORT"
+exec /sbin/setuser abc node main.js
