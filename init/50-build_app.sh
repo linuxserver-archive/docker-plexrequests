@@ -1,7 +1,7 @@
 #!/bin/bash
-set -e
+export HOME=/tmp
 
-git clone -q https://github.com/lokenx/plexrequests-meteor.git $COPIED_APP_PATH
+git -q clone https://github.com/lokenx/plexrequests-meteor.git $COPIED_APP_PATH
 
 cd $COPIED_APP_PATH
 meteor build --directory $BUNDLE_DIR --server=http://localhost:3000

@@ -1,2 +1,3 @@
 #!/bin/bash
-curl -s https://install.meteor.com | sh
+export HOME=/tmp
+curl -sL https://install.meteor.com | sed s/--progress-bar/-sL/g | /bin/sh

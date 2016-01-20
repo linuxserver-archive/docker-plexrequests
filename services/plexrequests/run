@@ -1,7 +1,5 @@
 #!/bin/bash
-set -e
-
-cd /app
+cd /app/bundle
 
 # Set a delay to wait to start meteor container
 if [[ $DELAY ]]; then
