@@ -10,7 +10,7 @@ Try it :
 
 To make it work it needs to be in the same netork with a mongo container.
 
-1 - Create the network
+1 - Create the network ( Newer version, older use link : see below )
 
 docker network create -d bridge plexreq_nw
 
@@ -22,4 +22,7 @@ docker run -d -h mongo --name mongo --net seedbox_nw zaggash/mongo
 
 docker run -d -h plexreq --name plexreq -e MONGO_URL=mongodb://mongo:27017 -e ROOT_URL=http://localhost -p 3000:3000 --net seedbox_nw zaggash/docker-plexrequests
 
+( 3b - For older version : use link )
+docker run -d -h plexreq --name plexreq -e MONGO_URL=mongodb://mongo:27017 -e ROOT_URL=http://localhost -p 3000:3000 --link mongo zaggash/docker-plexrequests
 
+The link behaviour wil be depracated on futur version, perfere the network if available
