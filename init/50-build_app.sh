@@ -10,3 +10,4 @@ cd $BUNDLE_DIR/bundle/programs/server/
 npm i
 
 mv $BUNDLE_DIR/bundle /app
+chown -R abc.abc /app

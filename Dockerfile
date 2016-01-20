@@ -20,4 +20,4 @@ RUN chmod -v +x /etc/service/*/run && chmod -v +x /etc/my_init.d/*.sh
 
 # Volumes and Ports
 VOLUME /app
-EXPOSE 80
+EXPOSE 3000
