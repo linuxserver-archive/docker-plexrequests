@@ -1,2 +1,4 @@
 #!/bin/bash
-chown -R abc.abc /app/bundle
+
+mkdir -p /config/db
+chown -R abc.abc /config /app/bundle

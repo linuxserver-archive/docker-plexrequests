@@ -1,0 +1,3 @@
+#!/bin/bash
+
+/sbin/setuser abc /usr/bin/mongod --dbpath=/config/db
