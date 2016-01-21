@@ -38,8 +38,8 @@ RUN rm -rf $COPIED_APP_PATH && \
 	rm -rf $BUNDLE_DIR && \
 	rm /usr/local/bin/meteor && \
 	rm -rf /usr/share/doc /usr/share/doc-base && \
-	rm -rf /tmp/* && \
-	npm cache clear  /dev/null 2>&1
+	npm cache clear > /dev/null 2>&1 && \
+	rm -rf /tmp/.*
 
 #Adding Custom files
 #ADD init/ /etc/my_init.d/
