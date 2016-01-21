@@ -1,20 +1,24 @@
 FROM linuxserver/baseimage
 MAINTAINER zaggash <zaggash@users.noreply.github.com>
 
-ENV APTLIST="git nodejs"
+ENV APTLIST="nodejs mongodb-server"
 ENV COPIED_APP_PATH="/tmp/git-app"
 ENV BUNDLE_DIR="/tmp/bundle-dir"
 
 #Install package
-RUN curl -sL https://deb.nodesource.com/setup_0.10 | bash - && \
+RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927 && \
+        echo "deb http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.2 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.2.list && \
+        curl -sL https://deb.nodesource.com/setup_0.10 | bash - && \
 	apt-get update -q && \
 	apt-get install $APTLIST -qy && \
 	npm install -g npm@latest && \
 	HOME=/tmp curl -sL https://install.meteor.com | sed s/--progress-bar/-sL/g | /bin/sh && \
 	apt-get clean && rm -rf /tmp/* /var/lib/apt/lists/* /var/tmp/*
 
-RUN git clone -q https://github.com/lokenx/plexrequests-meteor.git $COPIED_APP_PATH && \
-	cd $COPIED_APP_PATH && \
+RUN curl -o /tmp/source.tar.gz -L https://github.com/lokenx/plexrequests-meteor/tarball/master && \
+	mkdir -p $COPIED_APP_PATH && \
+        tar xvf /tmp/source.tar.gz -C $COPIED_APP_PATH --strip-components=1 && \
+        cd $COPIED_APP_PATH && \
 	HOME=/tmp meteor build --directory $BUNDLE_DIR --server=http://localhost:3000 && \
 	cd $BUNDLE_DIR/bundle/programs/server/ && \
 	npm i && \
