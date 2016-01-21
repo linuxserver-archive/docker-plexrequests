@@ -5,9 +5,9 @@ ENV APTLIST="git curl"
 ENV COPIED_APP_PATH="/tmp/git-app"
 ENV BUNDLE_DIR="/tmp/bundle-dir"
 
-NODE_VERSION=0.10.41
-NODE_ARCH=x64
-NODE_DIST=node-v${NODE_VERSION}-linux-${NODE_ARCH}
+ENV ENV NODE_VERSION=0.10.41
+ENV NODE_ARCH=x64
+ENV NODE_DIST=node-v${NODE_VERSION}-linux-${NODE_ARCH}
 
 #Install package
 RUN apt-get update -q && \
