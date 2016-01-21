@@ -16,7 +16,7 @@ docker network create -d bridge plexreq_nw
 
 2 - Start mongo
 
-docker run -d -h mongo --name mongo --net seedbox_nw zaggash/mongo
+docker run -d -h mongo --name mongo --net seedbox_nw zaggash/docker-mongo
 
 3 - Start plexrequests
 
