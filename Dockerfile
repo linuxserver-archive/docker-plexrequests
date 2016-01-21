@@ -32,7 +32,6 @@ ADD init/ /etc/my_init.d/
 ADD services/ /etc/service/
 RUN chmod -v +x /etc/service/*/run && chmod -v +x /etc/my_init.d/*.sh
 
-
 # Volumes and Ports
 VOLUME /app /config
 EXPOSE 3000
