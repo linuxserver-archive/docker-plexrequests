@@ -9,7 +9,6 @@ ENV BUNDLE_DIR="/tmp/bundle-dir"
 RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927 && \
         echo "deb http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.2 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.2.list && \
         curl -sL https://deb.nodesource.com/setup_0.10 | bash - && \
-	apt-get update -q && \
 	apt-get install $APTLIST -qy && \
 	npm install -g npm@latest && \
 	HOME=/tmp curl -sL https://install.meteor.com | sed s/--progress-bar/-sL/g | /bin/sh && \
