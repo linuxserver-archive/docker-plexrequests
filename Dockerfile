@@ -19,16 +19,13 @@ RUN git clone -q https://github.com/lokenx/plexrequests-meteor.git $COPIED_APP_P
 	cd $BUNDLE_DIR/bundle/programs/server/ && \
 	npm i && \
 	mv $BUNDLE_DIR/bundle /app && \
-	chown -R abc.abc /app/bundle && \
 	rm /usr/local/bin/meteor && \
-	rm -rf $COPIED_APP_PATH && \
-	rm -rf $BUNDLE_DIR && \
 	rm -rf /usr/share/doc /usr/share/doc-base && \
 	npm cache clear > /dev/null 2>&1 && \
 	rm -rf /tmp/* /tmp/.??*
 	
 #Adding Custom files
-#ADD init/ /etc/my_init.d/
+ADD init/ /etc/my_init.d/
 ADD services/ /etc/service/
 RUN chmod -v +x /etc/service/*/run && chmod -v +x /etc/my_init.d/*.sh
 
