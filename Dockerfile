@@ -1,14 +1,13 @@
 FROM linuxserver/baseimage
 MAINTAINER zaggash <zaggash@users.noreply.github.com>
 
-ENV APTLIST="nodejs mongodb-server"
+ENV APTLIST="nodejs"
 ENV COPIED_APP_PATH="/tmp/git-app"
 ENV BUNDLE_DIR="/tmp/bundle-dir"
+ENV MONGO_VERSION=3.2.1
 
 #Install package
-RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927 && \
-        echo "deb http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.2 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.2.list && \
-        curl -sL https://deb.nodesource.com/setup_0.10 | bash - && \
+RUN curl -sL https://deb.nodesource.com/setup_0.10 | bash - && \
 	apt-get install $APTLIST -qy && \
 	npm install -g npm@latest && \
 	apt-get clean && rm -rf /tmp/* /var/lib/apt/lists/* /var/tmp/*
@@ -26,6 +25,11 @@ RUN curl -o /tmp/source.tar.gz -L https://github.com/lokenx/plexrequests-meteor/
 	rm -rf /usr/share/doc /usr/share/doc-base && \
 	npm cache clear > /dev/null 2>&1 && \
 	rm -rf /tmp/* /tmp/.??* /root/.meteor
+
+RUN curl -sL https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-$MONGO_VERSION.tgz | tar -xz -C /tmp && \
+	chown -R root.root /tmp/mongodb-linux-x86_64-$MONGO_VERSION/bin/ && \
+	mv /tmp/mongodb-linux-x86_64-$MONGO_VERSION/bin/* /usr/local/bin/ && \
+	rm -Rf /tmp/mongodb-linux-x86_64-$MONGO_VERSION 
 	
 #Adding Custom files
 ADD init/ /etc/my_init.d/
