@@ -10,6 +10,3 @@ fi
 export PORT=${PORT:-3000} MONGO_URL=mongodb://127.0.0.1:27017 ROOT_URL=http://127.0.0.1
 echo "=> Starting meteor app on port:$PORT"
 exec /sbin/setuser abc node main.js
-
-
-
