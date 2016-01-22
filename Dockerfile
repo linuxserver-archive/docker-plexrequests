@@ -28,7 +28,7 @@ RUN curl -o /tmp/source.tar.gz -L https://github.com/lokenx/plexrequests-meteor/
 
 RUN curl -sL https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-$MONGO_VERSION.tgz | tar -xz -C /tmp && \
 	chown -R root.root /tmp/mongodb-linux-x86_64-$MONGO_VERSION/bin/ && \
-	mv /tmp/mongodb-linux-x86_64-$MONGO_VERSION/bin/* /usr/local/bin/ && \
+	mv /tmp/mongodb-linux-x86_64-$MONGO_VERSION/bin/mongod /usr/local/bin/ && \
 	rm -Rf /tmp/mongodb-linux-x86_64-$MONGO_VERSION 
 	
 #Adding Custom files
