@@ -1,5 +1,5 @@
 FROM linuxserver/baseimage
-MAINTAINER zaggash <zaggash@users.noreply.github.com>
+MAINTAINER zaggash <zaggash@users.noreply.github.com>, sparklyballs <sparklyballs@linuxserver.io>
 
 ENV APTLIST="nodejs"
 ENV COPIED_APP_PATH="/tmp/git-app"
