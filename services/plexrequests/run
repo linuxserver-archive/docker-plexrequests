@@ -7,7 +7,7 @@ if [[ $DELAY ]]; then
   sleep $DELAY
 fi
 
-export PORT=${PORT:-3000} MONGO_URL=mongodb://localhost:27017
+export PORT=${PORT:-3000} MONGO_URL=mongodb://localhost:27017/db
 echo "=> Starting meteor app on port:$PORT"
 exec /sbin/setuser abc node main.js
 
