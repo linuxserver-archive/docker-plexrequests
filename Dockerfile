@@ -26,7 +26,7 @@ RUN curl -o /tmp/source.tar.gz -L https://github.com/lokenx/plexrequests-meteor/
 	npm cache clear > /dev/null 2>&1 && \
 	rm -rf /tmp/* /root/.meteor
 
-RUN curl -o /tmp/mongo.tgz L https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-$MONGO_VERSION.tgz && \
+RUN curl -o /tmp/mongo.tgz -L https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-$MONGO_VERSION.tgz && \
 	mkdir -p /tmp/mongo_app && \
         tar -xz /tmp/mongo.tgz -C /tmp/mongo_app --strip-components=1 && \
         mv /tmp/mongo_app/bin/mongod /usr/bin/ && \
