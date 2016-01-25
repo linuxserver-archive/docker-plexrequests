@@ -1,10 +1,10 @@
 FROM linuxserver/baseimage
 MAINTAINER zaggash <zaggash@users.noreply.github.com>, sparklyballs <sparklyballs@linuxserver.io>
 
-ENV APTLIST="nodejs"
-ENV COPIED_APP_PATH="/tmp/git-app"
-ENV BUNDLE_DIR="/tmp/bundle-dir"
-ENV MONGO_VERSION=3.2.1
+ENV APTLIST="nodejs" \
+COPIED_APP_PATH="/tmp/git-app" \
+BUNDLE_DIR="/tmp/bundle-dir" \
+MONGO_VERSION=3.2.1
 
 #Install package
 RUN curl -sL https://deb.nodesource.com/setup_0.10 | bash - && \
@@ -26,12 +26,13 @@ RUN curl -o /tmp/source.tar.gz -L https://github.com/lokenx/plexrequests-meteor/
 	npm cache clear > /dev/null 2>&1 && \
 	rm -rf /tmp/* /tmp/.??* /root/.meteor
 
-RUN curl -sL https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-$MONGO_VERSION.tgz | tar -xz -C /tmp && \
-	chown -R root.root /tmp/mongodb-linux-x86_64-$MONGO_VERSION/bin/ && \
-	mv /tmp/mongodb-linux-x86_64-$MONGO_VERSION/bin/mongod /usr/bin/ && \
-	rm -Rf /tmp/mongodb-linux-x86_64-$MONGO_VERSION 
+RUN curl -o /tmp/mongo.tgz -L https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-ubuntu1404-$MONGO_VERSION.tgz  && \
+	mkdir -p /tmp/mongo_app && \
+        tar xf /tmp/mongo.tgz -C /tmp/mongo_app --strip-components=1 && \
+        mv /tmp/mongo_app/bin/mongod /usr/bin/ && \
+	rm -rf /tmp/*
 	
-#Adding Custom files
+# Adding Custom files
 ADD init/ /etc/my_init.d/
 ADD services/ /etc/service/
 RUN chmod -v +x /etc/service/*/run && chmod -v +x /etc/my_init.d/*.sh
