@@ -16,7 +16,7 @@ docker create --name=plexrequests -v /etc/localtime:/etc/localtime:ro
 
 **Parameters**
 
-* `-p 4242` - the port(s)
+* `-p 3000` - the port(s)
 * `-v /etc/localtime` for timesync - *optional*
 * `-v /config` - where plexrequests should store its config files
 * `-e PGID` for GroupID - see below for explanation
