@@ -4,6 +4,8 @@ The [LinuxServer.io](https://www.linuxserver.io/) team brings you another qualit
 
 # lsiodev/plexrequests
 
+![](https://raw.githubusercontent.com/linuxserver/beta-templates/master/lsiodev/img/plexrequests-banner.png)
+
 Simple automated way for users to request new content for Plex Users can search for content to request. Integrates with couchpotato, sonarr and sickrage etc... [Plexrequests](http://plexrequests.8bits.ca/)
 
 ## Usage
