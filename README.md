@@ -16,7 +16,7 @@ and sickrage etc... [Plexrequests](http://plexrequests.8bits.ca/)
 ```
 docker create --name=plexrequests -v /etc/localtime:/etc/localtime:ro
 -v \ <path to data>:/config -e PGID=<gid> -e PUID=<uid>  \
--p 3000:3000 lsiodev/plexrequests
+-e URL_BASE=</name> -p 3000:3000 lsiodev/plexrequests
 ```
 
 **Parameters**
