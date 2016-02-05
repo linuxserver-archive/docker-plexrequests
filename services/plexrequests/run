@@ -1,18 +1,25 @@
 #!/bin/bash
 
-unset HOME_URL
 
 cd /app/bundle || exit
 
 # Set a delay to wait to start meteor container
 if [[ $DELAY ]]; then
   echo "Delaying startup for $DELAY seconds"
-  sleep $DELAY
+  sleep "$DELAY"
 fi
 
-HOME_URL=127.0.0.1
-[ "$URL_BASE" ] && HOME_URL=$"{HOME_URL}""{$URL_BASE}"
 
-export PORT=${PORT:-3000} MONGO_URL=mongodb://127.0.0.1:27017 ROOT_URL="${HOME_URL}"
+# determine if a url base is set for reverse proxy
+HOME_URL=http://127.0.0.1
+if [ -z "$URL_BASE" ] || [ "$URL_BASE" == "0" ]; then
+HOME_URL="$HOME_URL"
+else
+HOME_URL="$HOME_URL""$URL_BASE"
+fi
+
+
+export PORT=${PORT:-3000} MONGO_URL=mongodb://127.0.0.1:27017 ROOT_URL="$HOME_URL"
 echo "=> Starting meteor app on port:$PORT"
 exec /sbin/setuser abc node main.js
+
