@@ -2,8 +2,6 @@ FROM linuxserver/baseimage
 MAINTAINER zaggash <zaggash@users.noreply.github.com>, sparklyballs <sparklyballs@linuxserver.io>
 
 ENV APTLIST="nodejs" \
-COPIED_APP_PATH="/tmp/git-app" \
-BUNDLE_DIR="/tmp/bundle-dir" \
 MONGO_VERSION=3.2.1
 
 #Install package
