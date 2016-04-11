@@ -8,7 +8,7 @@ INSTALLED=""
 
 #Check if compile is neeed
 [[ -f /app/plexrequests.version  ]] && INSTALLED=$(cat /app/plexrequests.version)
-[[  $VERSION == $INSTALLED ]] && exit 0
+[[  $VERSION == $INSTALLED ]] && echo "No update is needed, using $VERSION..." && exit 0
 
 ##Execution
 curl -o "/tmp/source.tar.gz" -L "https://github.com/lokenx/plexrequests-meteor/archive/$VERSION.tar.gz" && \
