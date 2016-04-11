@@ -6,7 +6,7 @@ BUNDLE_DIR="/tmp/bundle-dir"
 VERSION=$(curl -sX GET  "https://api.github.com/repos/lokenx/plexrequests-meteor/releases/latest" | awk '/tag_name/{print $4;exit}' FS='[""]')
 
 ##Execution
-curl -o /tmp/source.tar.gz -L https://github.com/lokenx/plexrequests-meteor/archive/$VERSION.tar.gz && \
+curl -o "/tmp/source.tar.gz" -L "https://github.com/lokenx/plexrequests-meteor/archive/$VERSION.tar.gz" && \
 mkdir -p $COPIED_APP_PATH && \
 tar xvf /tmp/source.tar.gz -C $COPIED_APP_PATH --strip-components=1 && \
 cd $COPIED_APP_PATH && \
