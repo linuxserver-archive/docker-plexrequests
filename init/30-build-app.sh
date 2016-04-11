@@ -19,6 +19,7 @@ curl -sL https://install.meteor.com | sed s/--progress-bar/-sL/g | /bin/sh && \
 meteor build --directory $BUNDLE_DIR --server=http://localhost:3000 && \
 cd $BUNDLE_DIR/bundle/programs/server/ && \
 npm i && \
+rm -Rf /app/bundle && \
 mv $BUNDLE_DIR/bundle /app && \
 rm /usr/local/bin/meteor && \
 rm -rf /usr/share/doc /usr/share/doc-base && \
