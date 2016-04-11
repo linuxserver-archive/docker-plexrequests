@@ -4,6 +4,11 @@ export HOME="/tmp"
 COPIED_APP_PATH="/tmp/git-app"
 BUNDLE_DIR="/tmp/bundle-dir"
 VERSION=$(curl -sX GET  "https://api.github.com/repos/lokenx/plexrequests-meteor/releases/latest" | awk '/tag_name/{print $4;exit}' FS='[""]')
+INSTALLED=""
+
+#Check if compile is neeed
+[[ -f /app/plexrequests.version  ]] && INSTALLED=$(cat /app/plexrequests.version)
+[[  $VERSION == $INSTALLED ]] && exit 0
 
 ##Execution
 curl -o "/tmp/source.tar.gz" -L "https://github.com/lokenx/plexrequests-meteor/archive/$VERSION.tar.gz" && \
@@ -18,4 +23,5 @@ mv $BUNDLE_DIR/bundle /app && \
 rm /usr/local/bin/meteor && \
 rm -rf /usr/share/doc /usr/share/doc-base && \
 npm cache clear > /dev/null 2>&1 && \
-rm -rf /tmp/* /tmp/.??* /root/.meteor
+rm -rf /tmp/* /tmp/.??* /root/.meteor && \
+echo $VERSION > /app/plexrequests.version
