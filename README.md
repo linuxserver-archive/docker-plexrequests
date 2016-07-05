@@ -33,7 +33,7 @@ docker create \
 * `-e PUID` for UserID - see below for explanation
 * `-e URL_BASE` - used for reverse proxy, see below for explanation
 
-It is based on phusion-baseimage with ssh removed, for shell access whilst the container is running do `docker exec -it plexrequests /bin/bash`.
+It is based on ubuntu xenial with s6 overlay, for shell access whilst the container is running do `docker exec -it plexrequests /bin/bash`.
 
 ### User / Group Identifiers
 
@@ -57,5 +57,7 @@ If you need to use a reverse proxy for plexrequest, set `URL_BASE` to `/<name>`.
 * Shell access whilst the container is running: `docker exec -it plexrequests /bin/bash`
 
 ## Versions
-+ **27.02.2016:** Bump to latest release
-+ **05.02.2016:** Initial Release.
+
++ **05.07.16:** Rebase to ubuntu xenial
++ **27.02.16:** Bump to latest release
++ **05.02.16:** Initial Release.

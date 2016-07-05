@@ -1,5 +1,4 @@
-#!/bin/bash
-
+#!/usr/bin/with-contenv bash
 
 cd /app/bundle || exit
 
@@ -10,7 +9,7 @@ if [[ $DELAY ]]; then
 fi
 
 
-# determine if a url base is set for reverse proxy
+# determine if a url base is set for reverse proxy
 HOME_URL=http://127.0.0.1
 if [ -z "$URL_BASE" ] || [ "$URL_BASE" == "0" ]; then
 HOME_URL="$HOME_URL"
@@ -21,5 +20,5 @@ fi
 
 export PORT=${PORT:-3000} MONGO_URL=mongodb://127.0.0.1:27017 ROOT_URL="$HOME_URL"
 echo "=> Starting meteor app on port:$PORT"
-exec /sbin/setuser abc node main.js
+exec s6-setuidgid abc node main.js
 
