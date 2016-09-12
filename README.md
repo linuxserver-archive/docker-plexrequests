@@ -1,15 +1,23 @@
-![https://linuxserver.io](https://www.linuxserver.io/wp-content/uploads/2015/06/linuxserver_medium.png)
+[linuxserverurl]: https://linuxserver.io
+[forumurl]: https://forum.linuxserver.io
+[ircurl]: https://www.linuxserver.io/index.php/irc/
+[podcasturl]: https://www.linuxserver.io/index.php/category/podcast/
 
-The [LinuxServer.io](https://linuxserver.io) team brings you another container release featuring easy user mapping and community support. Find us for support at:
-* [forum.linuxserver.io](https://forum.linuxserver.io)
-* [IRC](https://www.linuxserver.io/index.php/irc/) on freenode at `#linuxserver.io`
-* [Podcast](https://www.linuxserver.io/index.php/category/podcast/) covers everything to do with getting the most from your Linux Server plus a focus on all things Docker and containerisation!
+[![linuxserver.io](https://www.linuxserver.io/wp-content/uploads/2015/06/linuxserver_medium.png)][linuxserverurl]
 
-# lsiodev/plexrequests
+The [LinuxServer.io][linuxserverurl] team brings you another container release featuring easy user mapping and community support. Find us for support at:
+* [forum.linuxserver.io][forumurl]
+* [IRC][ircurl] on freenode at `#linuxserver.io`
+* [Podcast][podcasturl] covers everything to do with getting the most from your Linux Server plus a focus on all things Docker and containerisation!
 
-![](https://raw.githubusercontent.com/linuxserver/beta-templates/master/lsiodev/img/plexrequests-banner.png)
+# linuxserver/plexrequests
+[![Docker Pulls](https://img.shields.io/docker/pulls/linuxserver/plexrequests.svg)][hub][![Docker Stars](https://img.shields.io/docker/stars/linuxserver/plexrequests.svg)][hub][![Build Status](http://jenkins.linuxserver.io:8080/buildStatus/icon?job=Dockers/LinuxServer.io/linuxserver-plexrequests)](http://jenkins.linuxserver.io:8080/job/Dockers/job/LinuxServer.io/job/linuxserver-plexrequests/)
+[hub]: https://hub.docker.com/r/linuxserver/plexrequests/
 
-Simple automated way for users to request new content for Plex Users can search for content to request. Integrates with couchpotato, sonarr and sickrage etc... [Plexrequests](http://plexrequests.8bits.ca/)
+[Plexrequests][plexrequestsurl], a simple automated way for users to request new content for Plex Users can search for content to request. Integrates with couchpotato, sonarr and sickrage etc...
+
+[![plexrequests](https://raw.githubusercontent.com/linuxserver/beta-templates/master/lsiodev/img/plexrequests-banner.png)][plexrequestsurl]
+[plexrequestsurl]: http://plexrequests.8bits.ca/
 
 ## Usage
 
@@ -21,7 +29,7 @@ docker create \
     -e PGID=<gid> -e PUID=<uid>  \
     -e URL_BASE=</name> \
     -p 3000:3000 \
-    lsiodev/plexrequests
+    linuxserver/plexrequests
 ```
 
 **Parameters**
@@ -33,7 +41,7 @@ docker create \
 * `-e PUID` for UserID - see below for explanation
 * `-e URL_BASE` - used for reverse proxy, see below for explanation
 
-It is based on phusion-baseimage with ssh removed, for shell access whilst the container is running do `docker exec -it plexrequests /bin/bash`.
+It is based on ubuntu xenial with s6 overlay, for shell access whilst the container is running do `docker exec -it plexrequests /bin/bash`.
 
 ### User / Group Identifiers
 
@@ -57,5 +65,7 @@ If you need to use a reverse proxy for plexrequest, set `URL_BASE` to `/<name>`.
 * Shell access whilst the container is running: `docker exec -it plexrequests /bin/bash`
 
 ## Versions
-+ **27.02.2016:** Bump to latest release
-+ **05.02.2016:** Initial Release.
+
++ **12.09.16:** Rebase to ubuntu xenial
++ **27.02.16:** Bump to latest release
++ **05.02.16:** Initial Release.

@@ -1,0 +1,5 @@
+#!/usr/bin/with-contenv bash
+
+mkdir -p /config/db
+chown -R abc.abc /config /app
+
