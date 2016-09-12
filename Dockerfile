@@ -1,30 +1,35 @@
 FROM lsiobase/xenial
 MAINTAINER zaggash <zaggash@users.noreply.github.com>, sparklyballs
 
+# package versions
+ARG MONGO_VERSION="3.2.9"
+
 # environment settings
 ARG DEBIAN_FRONTEND="noninteractive"
 ARG COPIED_APP_PATH="/tmp/git-app"
 ARG BUNDLE_DIR="/tmp/bundle-dir"
-ARG MONGO_VERSION="3.2.7"
+
+# install mongo
+RUN \
+ curl -o \
+ /tmp/mongo.tgz -L \
+	https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-ubuntu1404-$MONGO_VERSION.tgz  && \
+ mkdir -p \
+	/tmp/mongo_app && \
+ tar xf \
+ /tmp/mongo.tgz -C \
+	/tmp/mongo_app --strip-components=1 && \
+ mv /tmp/mongo_app/bin/mongod /usr/bin/ && \
 
 # install packages
-RUN \
  curl -sL \
- https://deb.nodesource.com/setup_0.10 | bash - && \
+ 	https://deb.nodesource.com/setup_0.10 | bash - && \
  apt-get install -y \
 	--no-install-recommends \
 	nodejs=0.10.46-1nodesource1~xenial1 && \
  npm install -g npm@latest && \
 
-# cleanup
- apt-get clean && \
- rm -rf \
-	/tmp/* \
-	/var/lib/apt/lists/* \
-	/var/tmp/*
-
 # install plexrequests
-RUN \
  curl -o \
  /tmp/source.tar.gz -L \
 	https://github.com/lokenx/plexrequests-meteor/tarball/master && \
@@ -51,28 +56,19 @@ RUN \
 	/usr/share/doc \
 	/usr/share/doc-base && \
  npm cache clear > /dev/null 2>&1 && \
+
+# cleanup
+ apt-get clean && \
  rm -rf \
 	/tmp/* \
 	/tmp/.??* \
-	/root/.meteor
-
-# install mongo
-RUN \
- curl -o \
- /tmp/mongo.tgz -L \
-	https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-ubuntu1404-$MONGO_VERSION.tgz  && \
- mkdir -p \
-	/tmp/mongo_app && \
- tar xf \
- /tmp/mongo.tgz -C \
-	/tmp/mongo_app --strip-components=1 && \
- mv /tmp/mongo_app/bin/mongod /usr/bin/ && \
- rm -rf \
-	/tmp/*
+	/root/.meteor \
+	/var/lib/apt/lists/* \
+	/var/tmp/*
 
 # add local files
 COPY root/ /
 
 # ports and volumes
-VOLUME /config
 EXPOSE 3000
+VOLUME /config
