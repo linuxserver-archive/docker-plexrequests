@@ -9,8 +9,19 @@ ARG DEBIAN_FRONTEND="noninteractive"
 ARG COPIED_APP_PATH="/tmp/git-app"
 ARG BUNDLE_DIR="/tmp/bundle-dir"
 
-# install mongo
+# install packages
 RUN \
+ apt-get update && \
+ apt-get install -y \
+	curl && \
+ curl -sL \
+	https://deb.nodesource.com/setup_0.10 | bash - && \
+ apt-get install -y \
+	--no-install-recommends \
+	nodejs=0.10.46-1nodesource1~xenial1 && \
+ npm install -g npm@latest && \
+
+# install mongo
  curl -o \
  /tmp/mongo.tgz -L \
 	https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-ubuntu1404-$MONGO_VERSION.tgz  && \
@@ -21,18 +32,12 @@ RUN \
 	/tmp/mongo_app --strip-components=1 && \
  mv /tmp/mongo_app/bin/mongod /usr/bin/ && \
 
-# install packages
- curl -sL \
- 	https://deb.nodesource.com/setup_0.10 | bash - && \
- apt-get install -y \
-	--no-install-recommends \
-	nodejs=0.10.46-1nodesource1~xenial1 && \
- npm install -g npm@latest && \
-
 # install plexrequests
+ plexreq_tag=$(curl -sX GET "https://api.github.com/repos/lokenx/plexrequests-meteor/releases/latest" \
+	| awk '/tag_name/{print $4;exit}' FS='[""]') && \
  curl -o \
  /tmp/source.tar.gz -L \
-	https://github.com/lokenx/plexrequests-meteor/tarball/master && \
+	"https://github.com/lokenx/plexrequests-meteor/archive/${plexreq_tag}.tar.gz" && \
  mkdir -p \
 	$COPIED_APP_PATH && \
  tar xvf \
@@ -50,18 +55,16 @@ RUN \
  cd $BUNDLE_DIR/bundle/programs/server/ && \
  npm i && \
  mv $BUNDLE_DIR/bundle /app && \
- rm \
-	/usr/local/bin/meteor && \
- rm -rf \
-	/usr/share/doc \
-	/usr/share/doc-base && \
- npm cache clear > /dev/null 2>&1 && \
 
 # cleanup
+ npm cache clear > /dev/null 2>&1 && \
  apt-get clean && \
  rm -rf \
 	/tmp/* \
 	/tmp/.??* \
+	/usr/local/bin/meteor \
+	/usr/share/doc \
+	/usr/share/doc-base \
 	/root/.meteor \
 	/var/lib/apt/lists/* \
 	/var/tmp/*
