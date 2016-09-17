@@ -24,7 +24,7 @@ RUN \
 # install mongo
  curl -o \
  /tmp/mongo.tgz -L \
-	https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-ubuntu1404-$MONGO_VERSION.tgz  && \
+	https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-ubuntu1604-$MONGO_VERSION.tgz  && \
  mkdir -p \
 	/tmp/mongo_app && \
  tar xf \
