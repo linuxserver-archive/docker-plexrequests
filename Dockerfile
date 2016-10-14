@@ -1,6 +1,11 @@
 FROM lsiobase/xenial
 MAINTAINER zaggash <zaggash@users.noreply.github.com>, sparklyballs
 
+# set version label
+ARG BUILD_DATE
+ARG VERSION
+LABEL build_version="Linuxserver.io version:- ${VERSION} Build-date:- ${BUILD_DATE}"
+
 # package versions
 ARG MONGO_VERSION="3.2.9"
 

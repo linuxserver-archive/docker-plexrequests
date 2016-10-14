@@ -11,7 +11,7 @@ The [LinuxServer.io][linuxserverurl] team brings you another container release f
 * [Podcast][podcasturl] covers everything to do with getting the most from your Linux Server plus a focus on all things Docker and containerisation!
 
 # linuxserver/plexrequests
-[![](https://images.microbadger.com/badges/image/linuxserver/plexrequests.svg)](http://microbadger.com/images/linuxserver/plexrequests "Get your own image badge on microbadger.com")[![Docker Pulls](https://img.shields.io/docker/pulls/linuxserver/plexrequests.svg)][hub][![Docker Stars](https://img.shields.io/docker/stars/linuxserver/plexrequests.svg)][hub][![Build Status](http://jenkins.linuxserver.io:8080/buildStatus/icon?job=Dockers/LinuxServer.io/linuxserver-plexrequests)](http://jenkins.linuxserver.io:8080/job/Dockers/job/LinuxServer.io/job/linuxserver-plexrequests/)
+[![](https://images.microbadger.com/badges/version/linuxserver/plexrequests.svg)](https://microbadger.com/images/linuxserver/plexrequests "Get your own version badge on microbadger.com")[![](https://images.microbadger.com/badges/image/linuxserver/plexrequests.svg)](http://microbadger.com/images/linuxserver/plexrequests "Get your own image badge on microbadger.com")[![Docker Pulls](https://img.shields.io/docker/pulls/linuxserver/plexrequests.svg)][hub][![Docker Stars](https://img.shields.io/docker/stars/linuxserver/plexrequests.svg)][hub][![Build Status](http://jenkins.linuxserver.io:8080/buildStatus/icon?job=Dockers/LinuxServer.io/linuxserver-plexrequests)](http://jenkins.linuxserver.io:8080/job/Dockers/job/LinuxServer.io/job/linuxserver-plexrequests/)
 [hub]: https://hub.docker.com/r/linuxserver/plexrequests/
 
 [Plexrequests][plexrequestsurl], a simple automated way for users to request new content for Plex Users can search for content to request. Integrates with couchpotato, sonarr and sickrage etc...
@@ -60,12 +60,22 @@ Webui is at `<your-ip>:3000`, sign in with your plex username. More info from th
 
 If you need to use a reverse proxy for plexrequest, set `URL_BASE` to `/<name>`. The `/` before the name is important.
 
-## Logs and shell
+## Info
+
 * To monitor the logs of the container in realtime `docker logs -f plexrequests`.
 * Shell access whilst the container is running: `docker exec -it plexrequests /bin/bash`
 
+* container version number 
+
+`docker inspect -f '{{ index .Config.Labels "build_version" }}' plexrequests`
+
+* image version number
+
+`docker inspect -f '{{ index .Config.Labels "build_version" }}' linuxserver/plexrequests`
+
 ## Versions
 
++ **14-10-16:** Add version layer information.
 + **18.09.16:** Use specific mongo version for xenial.
 + **12.09.16:** Rebase to ubuntu xenial, move to linuxserver repository
 + **27.02.16:** Bump to latest release
