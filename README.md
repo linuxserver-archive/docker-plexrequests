@@ -81,7 +81,7 @@ If you need to use a reverse proxy for plexrequest, set `URL_BASE` to `/<name>`.
 
 ## Versions
 
-+ **14-10-16:** Add version layer information.
++ **14.10.16:** Add version layer information.
 + **18.09.16:** Use specific mongo version for xenial.
 + **12.09.16:** Rebase to ubuntu xenial, move to linuxserver repository
 + **27.02.16:** Bump to latest release
