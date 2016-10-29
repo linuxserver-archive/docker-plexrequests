@@ -50,8 +50,9 @@ RUN \
 	$COPIED_APP_PATH --strip-components=1 && \
  cd $COPIED_APP_PATH && \
  HOME=/tmp \
+ export METEOR_NO_RELEASE_CHECK=true && \
  curl -sL \
-	https://install.meteor.com | \
+	https://install.meteor.com/?release=1.4.1.3 | \
 	sed s/--progress-bar/-sL/g | /bin/sh && \
  HOME=/tmp \
  meteor build \
