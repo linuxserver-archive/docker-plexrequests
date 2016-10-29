@@ -20,10 +20,10 @@ RUN \
  apt-get install -y \
 	curl && \
  curl -sL \
-	https://deb.nodesource.com/setup_4.x | bash - && \
+	https://deb.nodesource.com/setup_0.10 | bash - && \
  apt-get install -y \
 	--no-install-recommends \
-	nodejs && \
+	nodejs=0.10.48-1nodesource1~xenial1 && \
  npm install -g npm@latest && \
 
 # install mongo
