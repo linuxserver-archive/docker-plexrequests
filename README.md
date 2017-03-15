@@ -2,6 +2,8 @@
 [forumurl]: https://forum.linuxserver.io
 [ircurl]: https://www.linuxserver.io/irc/
 [podcasturl]: https://www.linuxserver.io/podcast/
+[appurl]: http://plexrequests.8bits.ca/
+[hub]: https://hub.docker.com/r/linuxserver/plexrequests/
 
 [![linuxserver.io](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/linuxserver_medium.png)][linuxserverurl]
 
@@ -12,12 +14,10 @@ The [LinuxServer.io][linuxserverurl] team brings you another container release f
 
 # linuxserver/plexrequests
 [![](https://images.microbadger.com/badges/version/linuxserver/plexrequests.svg)](https://microbadger.com/images/linuxserver/plexrequests "Get your own version badge on microbadger.com")[![](https://images.microbadger.com/badges/image/linuxserver/plexrequests.svg)](http://microbadger.com/images/linuxserver/plexrequests "Get your own image badge on microbadger.com")[![Docker Pulls](https://img.shields.io/docker/pulls/linuxserver/plexrequests.svg)][hub][![Docker Stars](https://img.shields.io/docker/stars/linuxserver/plexrequests.svg)][hub][![Build Status](http://jenkins.linuxserver.io:8080/buildStatus/icon?job=Dockers/LinuxServer.io/linuxserver-plexrequests)](http://jenkins.linuxserver.io:8080/job/Dockers/job/LinuxServer.io/job/linuxserver-plexrequests/)
-[hub]: https://hub.docker.com/r/linuxserver/plexrequests/
 
-[Plexrequests][plexrequestsurl], a simple automated way for users to request new content for Plex Users can search for content to request. Integrates with couchpotato, sonarr and sickrage etc...
+[Plexrequests][appurl], a simple automated way for users to request new content for Plex Users can search for content to request. Integrates with couchpotato, sonarr and sickrage etc...
 
-[![plexrequests](https://raw.githubusercontent.com/linuxserver/beta-templates/master/lsiodev/img/plexrequests-banner.png)][plexrequestsurl]
-[plexrequestsurl]: http://plexrequests.8bits.ca/
+[![plexrequests](https://raw.githubusercontent.com/linuxserver/beta-templates/master/lsiodev/img/plexrequests-banner.png)][appurl]
 
 ## Usage
 
