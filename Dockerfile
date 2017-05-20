@@ -24,7 +24,6 @@ RUN \
  apt-get install -y \
 	--no-install-recommends \
 	nodejs=0.10.48-1nodesource1~xenial1 && \
- npm install -g npm@latest && \
 
 # install mongo
  curl -o \
@@ -45,7 +44,7 @@ RUN \
 	"https://github.com/lokenx/plexrequests-meteor/archive/${plexreq_tag}.tar.gz" && \
  mkdir -p \
 	$COPIED_APP_PATH && \
- tar xvf \
+ tar xf \
  /tmp/source.tar.gz -C \
 	$COPIED_APP_PATH --strip-components=1 && \
  cd $COPIED_APP_PATH && \
