@@ -1,10 +1,10 @@
 FROM lsiobase/xenial
-MAINTAINER zaggash <zaggash@users.noreply.github.com>, sparklyballs
 
 # set version label
 ARG BUILD_DATE
 ARG VERSION
 LABEL build_version="Linuxserver.io version:- ${VERSION} Build-date:- ${BUILD_DATE}"
+LABEL maintainer="zaggash <zaggash@users.noreply.github.com>,sparklyballs"
 
 # package versions
 ARG MONGO_VERSION="3.2.9"
@@ -14,18 +14,18 @@ ARG DEBIAN_FRONTEND="noninteractive"
 ARG COPIED_APP_PATH="/tmp/git-app"
 ARG BUNDLE_DIR="/tmp/bundle-dir"
 
-# install packages
 RUN \
+ echo "**** install packages ****" && \
  apt-get update && \
  apt-get install -y \
 	curl && \
+ echo "***** install nodejs ****" && \
  curl -sL \
 	https://deb.nodesource.com/setup_0.10 | bash - && \
  apt-get install -y \
 	--no-install-recommends \
 	nodejs=0.10.48-1nodesource1~xenial1 && \
-
-# install mongo
+ echo "**** install mongo ****" && \
  curl -o \
  /tmp/mongo.tgz -L \
 	https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-ubuntu1604-$MONGO_VERSION.tgz  && \
@@ -35,8 +35,7 @@ RUN \
  /tmp/mongo.tgz -C \
 	/tmp/mongo_app --strip-components=1 && \
  mv /tmp/mongo_app/bin/mongod /usr/bin/ && \
-
-# install plexrequests
+ echo "**** install plexrequests ****" && \
  plexreq_tag=$(curl -sX GET "https://api.github.com/repos/lokenx/plexrequests-meteor/releases/latest" \
 	| awk '/tag_name/{print $4;exit}' FS='[""]') && \
  curl -o \
@@ -60,8 +59,7 @@ RUN \
  cd $BUNDLE_DIR/bundle/programs/server/ && \
  npm i && \
  mv $BUNDLE_DIR/bundle /app && \
-
-# cleanup
+ echo "**** cleanup ****" && \
  npm cache clear > /dev/null 2>&1 && \
  apt-get clean && \
  rm -rf \
