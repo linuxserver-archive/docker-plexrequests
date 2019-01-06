@@ -3,7 +3,7 @@
 cd /app/bundle || exit
 
 # Set a delay to wait to start meteor container
-if [[ $DELAY ]]; then
+if [[ -n $DELAY ]]; then
   echo "Delaying startup for $DELAY seconds"
   sleep "$DELAY"
 fi
