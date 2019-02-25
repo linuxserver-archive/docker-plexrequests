@@ -5,6 +5,8 @@
 [appurl]: http://plexrequests.8bits.ca/
 [hub]: https://hub.docker.com/r/linuxserver/plexrequests/
 
+THIS IMAGE IS DEPRECATED. For users that want to have a current Plex request server we highly reccomend `linuxserver/ombi` .
+
 [![linuxserver.io](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/linuxserver_medium.png)][linuxserverurl]
 
 The [LinuxServer.io][linuxserverurl] team brings you another container release featuring easy user mapping and community support. Find us for support at:

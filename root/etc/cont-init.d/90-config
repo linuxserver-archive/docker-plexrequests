@@ -1,0 +1,22 @@
+#!/usr/bin/with-contenv bash
+
+echo '
+******************************************************
+******************************************************
+*                                                    *
+*                                                    *
+*          This image has been deprecated            *
+*                                                    *
+*       For users looking for a replacement          *
+*               We reccomend Ombi                    *
+*                                                    *
+*               linuxserver/ombi                     *
+*                                                    *
+*    https://hub.docker.com/r/linuxserver/ombi       *
+*                                                    *
+*   https://github.com/linuxserver/docker-ombi       *
+*                                                    *
+*                                                    *
+*                                                    *
+******************************************************
+******************************************************'
